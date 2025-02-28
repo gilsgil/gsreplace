@@ -80,7 +80,11 @@ https://example.com/?param1=value1&param2=value2<script>
 gsreplace follows Unix philosophy by reading from stdin and writing to stdout, making it easy to integrate with other tools:
 
 ```bash
-cat urls.txt | gsreplace XSS | httpx -silent | nuclei -t xss.yaml
+# Standard Mode
+cat urls.txt | gsreplace -a '@burpcollab.net' |  | httpx -silent
+
+# Append Mode
+cat urls.txt | gsreplace -a 'https://burpcollab.net' |  | httpx -silent
 ```
 
 ## Use Cases
